@@ -118,7 +118,7 @@ if len(BIN_CHANNEL) == 0:
     exit()
 else:
     BIN_CHANNEL = int(BIN_CHANNEL)
-URL = environ.get("URL", "http://184.174.33.24:3000/api/deploy/RqjjDR4qZHMfRUM2hD1GV")
+URL = environ.get("URL", "http://184.174.33.24:3000/api/deploy/NTVrdzUueExqRI6XpiTrx")
 if len(URL) == 0:
     print('Error - URL is missing, exiting now')
     exit()
