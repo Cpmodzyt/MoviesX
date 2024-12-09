@@ -24,7 +24,7 @@ async def pm_search(client, message):
     ]]
     reply_markup=InlineKeyboardMarkup(btn)
     if await db.get_pm_search_status(bot_id):
-        s = await message.reply(f"<b><i>⚠️ `{message.text}` searching...</i></b>", quote=True)
+        s = await message.reply(f"<code>searching...</code>", quote=True)
         if 'hindi' in message.text.lower() or 'tamil' in message.text.lower() or 'telugu' in message.text.lower() or 'malayalam' in message.text.lower() or 'kannada' in message.text.lower() or 'english' in message.text.lower() or 'gujarati' in message.text.lower(): 
             return await auto_filter(client, message, s)
         await auto_filter(client, message, s)
@@ -245,17 +245,11 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             for file in files
         ]
     if settings['shortlink'] and not await db.has_premium_access(query.from_user.id):
-        btn.insert(0,[
-            InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans")
-        ])
-        btn.insert(1,
+        btn.insert(0,
             [InlineKeyboardButton("🧩  Send All  🧩", url=await get_shortlink(settings['url'], settings['api'], f'https://t.me/{temp.U_NAME}?start=all_{query.message.chat.id}_{key}')),
             InlineKeyboardButton("Quality", callback_data=f"quality#{key}#{req}#{offset}")]
         )
     else:
-        btn.insert(0,[
-            InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans")
-        ])
         btn.insert(1,
             [InlineKeyboardButton("🧩  Send All  🧩", callback_data=f"send_all#{key}#{req}"),
             InlineKeyboardButton("Quality", callback_data=f"quality#{key}#{req}#{offset}")]
@@ -305,18 +299,12 @@ async def lang_next_page(bot, query):
             for file in files
         ]
     if settings['shortlink'] and not await db.has_premium_access(query.from_user.id):
-        btn.insert(0,[
-            InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans")
-        ])
-        btn.insert(1,
+        btn.insert(0,
             [InlineKeyboardButton("🧩  Send All  🧩", url=await get_shortlink(settings['url'], settings['api'], f'https://t.me/{temp.U_NAME}?start=all_{query.message.chat.id}_{key}')),
             InlineKeyboardButton("Quality", callback_data=f"quality#{key}#{req}#{l_offset}")]
         )
     else:
-        btn.insert(0,[
-            InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans")
-        ])
-        btn.insert(1,
+        btn.insert(0,
             [InlineKeyboardButton("🧩  Send All  🧩", callback_data=f"send_all#{key}#{req}"),
             InlineKeyboardButton("Quality", callback_data=f"quality#{key}#{req}#{l_offset}")]
         )
@@ -430,8 +418,7 @@ async def quality_next_page(bot, query):
             
     else:
         btn.insert(0,
-            [InlineKeyboardButton("🧩  Send All  🧩", callback_data=f"send_all#{key}#{req}"),
-            InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans"),]
+            [InlineKeyboardButton("🧩  Send All  🧩", callback_data=f"send_all#{key}#{req}")]
         )
     if 0 < l_offset <= MAX_BTN:
         b_offset = 0
@@ -930,8 +917,7 @@ async def auto_filter(client, msg, s, spoll=False):
                 InlineKeyboardButton("Quality", callback_data=f"quality#{key}#{req}#{offset}")]
             )
             btn.insert(1,
-                [InlineKeyboardButton("🧩  Send All  🧩", url=await get_shortlink(settings['url'], settings['api'], f'https://t.me/{temp.U_NAME}?start=all_{message.chat.id}_{key}')),
-                InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans")]
+                [InlineKeyboardButton("🧩  Send All  🧩", url=await get_shortlink(settings['url'], settings['api'], f'https://t.me/{temp.U_NAME}?start=all_{message.chat.id}_{key}'))]
             )
         else:
             btn.insert(0,
@@ -939,8 +925,7 @@ async def auto_filter(client, msg, s, spoll=False):
                 InlineKeyboardButton("Quality", callback_data=f"quality#{key}#{req}#{offset}")]
             )
             btn.insert(1,
-                [InlineKeyboardButton("🧩  Send All  🧩", callback_data=f"send_all#{key}#{req}"),
-                InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans")]
+                [InlineKeyboardButton("🧩  Send All  🧩", callback_data=f"send_all#{key}#{req}")]
             )
         btn.append(
             [InlineKeyboardButton(text=f"1/{math.ceil(int(total_results) / MAX_BTN)}", callback_data="buttons"),
@@ -949,13 +934,11 @@ async def auto_filter(client, msg, s, spoll=False):
     else:
         if settings['shortlink'] and not await db.has_premium_access(message.from_user.id):
             btn.insert(0,
-                [InlineKeyboardButton("🧩  Send All  🧩", url=await get_shortlink(settings['url'], settings['api'], f'https://t.me/{temp.U_NAME}?start=all_{message.chat.id}_{key}')),
-                InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans")]
+                [InlineKeyboardButton("🧩  Send All  🧩", url=await get_shortlink(settings['url'], settings['api'], f'https://t.me/{temp.U_NAME}?start=all_{message.chat.id}_{key}'))]
             )
         else:
             btn.insert(0,
-                [InlineKeyboardButton("🧩  Send All  🧩", callback_data=f"send_all#{key}#{req}"),
-                InlineKeyboardButton("🥇 ʙᴜʏ 🥇", url=f"https://t.me/{temp.U_NAME}?start=plans")]
+                [InlineKeyboardButton("🧩  Send All  🧩", callback_data=f"send_all#{key}#{req}")]
             )
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']

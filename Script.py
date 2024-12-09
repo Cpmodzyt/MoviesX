@@ -69,16 +69,19 @@ Please Google Search and check your spelling is correct.
 
 📝 ɴᴏᴛᴇ:- ʏᴏᴜ sʜᴏᴜʟᴅ ɴᴏᴛ ʙᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ɪɴ ɢʀᴏᴜᴘ. sᴇɴᴅ ᴄᴏᴍᴍᴀɴᴅ ᴡɪᴛʜᴏᴜᴛ ʙᴇɪɴɢ ᴀɴ ᴀɴᴏɴʏᴍᴜs ᴀᴅᴍɪɴ.</b>"""
 
-    IMDB_TEMPLATE = """<b>☘️ Title: {title} | {year}</b><br>
-📆 <b>Release Date ➜</b> {release_date}<br>
-⭐️ <b>Rating ➜</b> {rating} / 10<br>
-⏰ <b>Runtime ➜</b> {runtime} minutes<br>
-🌼 <b>Languages ➜</b> #{languages}<br>
-🎭 <b>Director ➜</b> {director}<br>
-🌎 <b>Country ➜</b> {countries}<br>
-📕 <b>Genres ➜</b> {genres}<br><br>
-📖️ <b>Story ➜</b> {plot}<br><br>
-<blockquote><a href="https://t.me/InterWorldmx">#InterWorld</a> | <a href="https://t.me/InterWorldMXbot">@MoviesX</a></blockquote>
+    IMDB_TEMPLATE = """<b>☘️ Title: {title} | {year}</b>
+
+📆 <b>Release Date ➜ {release_date}</b>
+⭐️ <b>Rating ➜ {rating} / 10</b>
+⏰ <b>Runtime ➜ {runtime} minutes</b>
+🌼 <b>Languages ➜ #{languages}</b>
+🎭 <b>Director ➜ {director}</b>
+🌎 <b>Country ➜ {countries}</b>
+📕 <b>Genres ➜ {genres}</b>
+
+📖️ <b>Story ➜ {plot}</b>
+
+<b><blockquote><a href="https://t.me/InterWorldmx">#InterWorld</a> | <a href="https://t.me/InterWorldMoviebot">@MoviesX</a></blockquote></b>
 """
 
     FILE_CAPTION = """<b><blockquote>@Interworldmx - {file_name}</blockquote></b>"""
