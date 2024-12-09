@@ -31,7 +31,7 @@ async def start(client, message):
             InlineKeyboardButton('⚡️ Updates ⚡️', url=UPDATES_LINK),
             InlineKeyboardButton('💡 Support 💡', url=SUPPORT_LINK)
         ]]
-        await message.reply(text=f"<b>Hey {user}, <i>{wish}</i>\nHow can I help you ?</b>", reply_markup=InlineKeyboardMarkup(btn))
+        await message.reply(text=f"<b>Hey {user}, {wish}\nHow can I help you ?</b>", reply_markup=InlineKeyboardMarkup(btn))
         return 
         
     if not await db.is_user_exist(message.from_user.id):
