@@ -1,25 +1,29 @@
 class script(object):
 
-    START_TXT = """<b>ʜᴇʏ {}, <i>{}</i>
-    
-ɪ ᴀᴍ ᴘᴏᴡᴇʀғᴜʟ ᴀᴜᴛᴏ ғɪʟᴛᴇʀ ᴡɪᴛʜ ʟɪɴᴋ sʜᴏʀᴛᴇɴᴇʀ ʙᴏᴛ. ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴀꜱ ᴀᴜᴛᴏ ғɪʟᴛᴇʀ ᴡɪᴛʜ ʟɪɴᴋ sʜᴏʀᴛᴇɴᴇʀ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ... ɪᴛ'ꜱ ᴇᴀꜱʏ ᴛᴏ ᴜꜱᴇ ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴀꜱ ᴀᴅᴍɪɴ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɪ ᴡɪʟʟ ᴘʀᴏᴠɪᴅᴇ ᴛʜᴇʀᴇ ᴍᴏᴠɪᴇꜱ ᴡɪᴛʜ ʏᴏᴜʀ ʟɪɴᴋ ꜱʜᴏʀᴛᴇɴᴇʀ... ♻️</b>"""
+    START_TXT = """<b>✨ Hello {}, {} 
 
-    MY_ABOUT_TXT = """★ Server: <a href=https://www.heroku.com>Heroku</a>
-★ Database: <a href=https://www.mongodb.com>MongoDB</a>
-★ Language: <a href=https://www.python.org>Python</a>
-★ Library: <a href=https://pyrogram.org>Pyrogram</a>"""
+<blockquote>My Name Is <a href=https://t.me/InterworldMoviebot>MoviesX</a></blockquote>
 
-    MY_OWNER_TXT = """★ Name: HA Bots
-★ Username: @HA_Bots
+I Can Provide Movie For You Just Add Me In Your Group Or Join Our Group!</b>"""
+
+    MY_ABOUT_TXT = """<b>✯ Developer: Itzmecp & Mr Buddy
+✯ Coded On: Python/Pyrogram
+✯ My Database: Mongo-DB
+✯ My Server: Anywhere
+✯ My Version: MoviesX v5.0.1</b>"""
+
+    MY_OWNER_TXT = """★ Name: Itzmecp
+★ Username: @Itzmecp
 ★ Country: Sri Lanka 🇱🇰"""
 
-    STATUS_TXT = """🗂 Total Files: <code>{}</code>
-👤 Total Users: <code>{}</code>
-👥 Total Chats: <code>{}</code>
-🤑 Premium Users: <code>{}</code>
-✨ Used Storage: <code>{}</code>
-🗳 Free Storage: <code>{}</code>
-🚀 Bot Uptime: <code>{}</code>"""
+    STATUS_TXT = """<blockquote><code>Total Files: {}</code><br>
+<code>Total Users: {}</code><br>
+<code>Total Chats: {}</code><br>
+<code>Premium Users: {}</code><br>
+<code>Used Storage: {}</code><br>
+<code>Free Storage: {}</code><br>
+<code>Bot Uptime: {}</code></blockquote>"""
+
 
     NEW_GROUP_TXT = """#NewGroup
 Title - {}
@@ -34,10 +38,8 @@ Total - <code>{}</code>"""
     NOT_FILE_TXT = """👋 Hello {},
 
 I can't find the <b>{}</b> in my database! 🥲
-
-👉 Google Search and check your spelling is correct.
-👉 Please read the Instructions to get better results.
-👉 Or not been released yet."""
+Please Google Search and check your spelling is correct.
+"""
     
     EARN_TXT = """<b>ʜᴏᴡ ᴛᴏ ᴇᴀʀɴ ꜰʀᴏᴍ ᴛʜɪs ʙᴏᴛ
 
@@ -67,23 +69,21 @@ I can't find the <b>{}</b> in my database! 🥲
 
 📝 ɴᴏᴛᴇ:- ʏᴏᴜ sʜᴏᴜʟᴅ ɴᴏᴛ ʙᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ɪɴ ɢʀᴏᴜᴘ. sᴇɴᴅ ᴄᴏᴍᴍᴀɴᴅ ᴡɪᴛʜᴏᴜᴛ ʙᴇɪɴɢ ᴀɴ ᴀɴᴏɴʏᴍᴜs ᴀᴅᴍɪɴ.</b>"""
 
-    IMDB_TEMPLATE = """✅ I Found: <code>{query}</code>
+    IMDB_TEMPLATE = """<b>☘️ Title: {title} | {year}</b><br>
+📆 <b>Release Date ➜</b> {release_date}<br>
+⭐️ <b>Rating ➜</b> {rating} / 10<br>
+⏰ <b>Runtime ➜</b> {runtime} minutes<br>
+🌼 <b>Languages ➜</b> #{languages}<br>
+🎭 <b>Director ➜</b> {director}<br>
+🌎 <b>Country ➜</b> {countries}<br>
+📕 <b>Genres ➜</b> {genres}<br><br>
+📖️ <b>Story ➜</b> {plot}<br><br>
+<blockquote><a href="https://t.me/InterWorldmx">#InterWorld</a> | <a href="https://t.me/InterWorldMXbot">@MoviesX</a></blockquote>
+"""
 
-🏷 Title: <a href={url}>{title}</a>
-🎭 Genres: {genres}
-📆 Year: <a href={url}/releaseinfo>{year}</a>
-🌟 Rating: <a href={url}/ratings>{rating} / 10</a>
-☀️ Languages: {languages}
-📀 RunTime: {runtime} Minutes
+    FILE_CAPTION = """<b><blockquote>@Interworldmx - {file_name}</blockquote></b>"""
 
-🗣 Requested by: {message.from_user.mention}
-©️ Powered by: <b>{message.chat.title}</b>"""
-
-    FILE_CAPTION = """<i>{file_name}</i>
-
-🚫 ᴘʟᴇᴀsᴇ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ᴄʟᴏsᴇ ʙᴜᴛᴛᴏɴ ɪꜰ ʏᴏᴜ ʜᴀᴠᴇ sᴇᴇɴ ᴛʜᴇ ᴍᴏᴠɪᴇ 🚫"""
-
-    WELCOME_TEXT = """👋 Hello {mention}, Welcome to {title} group! 💞"""
+    WELCOME_TEXT = """<b>👋 Hello {mention}, Welcome to {title} group ! 💞</b>"""
 
     HELP_TXT = """<b>Note - <spoiler>Try each command without any argument to see more details 😹</spoiler></b>"""
     
@@ -156,5 +156,3 @@ I can't find the <b>{}</b> in my database! 🥲
 💢 ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ
 
 ‼️ ᴀғᴛᴇʀ sᴇɴᴅɪɴɢ ᴀ sᴄʀᴇᴇɴsʜᴏᴛ ᴘʟᴇᴀsᴇ ɢɪᴠᴇ ᴜs sᴏᴍᴇ ᴛɪᴍᴇ ᴛᴏ ᴀᴅᴅ ʏᴏᴜ ɪɴ ᴛʜᴇ ᴘʀᴇᴍɪᴜᴍ ʟɪsᴛ</i></b>"""
-
-
