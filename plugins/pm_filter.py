@@ -95,7 +95,7 @@ async def group_search(client, message):
             await message.reply_text("Request sent!")
             return  
         else:
-            s = await message.reply(f"<b><i>⚠️ `{message.text}` searching...</i></b>")
+            s = await message.reply(f"<code>searching...</code>")
             await auto_filter(client, message, s)
     else:
         k = await message.reply_text('Auto Filter Off! ❌')
