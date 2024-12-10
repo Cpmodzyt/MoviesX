@@ -7,82 +7,11 @@ from time import time as time_now
 import datetime
 from Script import script
 from pyrogram import Client, filters, enums
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.ia_filterdb import Media, get_file_details, delete_files
 from database.users_chats_db import db
-from info import (
-    INDEX_CHANNELS, ADMINS, IS_VERIFY, VERIFY_TUTORIAL, VERIFY_EXPIRE, SHORTLINK_API, SHORTLINK_URL, DELETE_TIME, 
-    SUPPORT_LINK, UPDATES_LINK, LOG_CHANNEL, PICS, IS_STREAM, PAYMENT_QR, OWNER_USERNAME, REACTIONS, 
-    PM_FILE_DELETE_TIME, OWNER_UPI_ID, API_ID, API_HASH, BOT_TOKEN
-)
-from utils import (
-    get_settings, get_size, is_subscribed, is_check_admin, get_shortlink, get_verify_status, update_verify_status, 
-    save_group_settings, temp, get_readable_time, get_wish, get_seconds
-)
-# Dictionary to store file data
-file_store = {}
-
-# Setup the commands
-def setup_commands(client: Client):
-    @client.on_message(filters.command('remove_fsub'))
-    async def remove_fsub(client, message):
-        grp_id = message.chat.id
-        settings = await get_settings(int(grp_id))  # Fetch group settings
-        user_id = message.from_user.id
-        chat_type = message.chat.type
-        if not user_id:
-            return await message.reply("<b>You are Anonymous admin you can't use this command!</b>")
-        if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-            return await message.reply_text("Use this command in group.")
-        if not await is_check_admin(client, grp_id, user_id):
-            return await message.reply_text("You are not an admin in this group.")
-        if not settings['fsub']:
-            return await message.reply_text("No force subscribe channel is set.")
-
-        await save_group_settings(grp_id, 'fsub', None)
-        await message.reply_text("<b>Successfully removed your force channel ID.</b>")
-
-    @client.on_message(filters.private & filters.command("link"))
-    async def link_command(client, message):
-        if not (message.document or message.video):
-            await message.reply_text("Please send a file or video along with the /link command.")
-            return
-
-        # Forward the file to the log channel
-        forwarded_message = await message.forward(chat_id=LOG_CHANNEL)
-        message_id = forwarded_message.message_id
-
-        # Generate a unique ID for the file
-        unique_id = str(message_id)
-        file_store[unique_id] = {
-            "message_id": message_id,
-            "chat_id": LOG_CHANNEL,
-        }
-
-        # Generate a link for the file
-        link = f"https://t.me/{client.me.username}?start={unique_id}"
-        await message.reply_text(f"File saved! Here is your link:\n{link}")
-
-    @client.on_message(filters.private & filters.command("start"))
-    async def start_command(client, message):
-        args = message.command[1:]  # Extract arguments from the /start command
-        if args:
-            unique_id = args[0]
-            if unique_id in file_store:
-                file_data = file_store[unique_id]
-                chat_id = file_data["chat_id"]
-                message_id = file_data["message_id"]
-
-                # Forward the file from the log channel to the user
-                await client.forward_messages(
-                    chat_id=message.chat.id,
-                    from_chat_id=chat_id,
-                    message_ids=message_id
-                )
-            else:
-                await message.reply_text("Invalid or expired link.")
-        else:
-            await message.reply_text("Send /link with a file to generate a link.")
+from info import INDEX_CHANNELS, ADMINS, IS_VERIFY, VERIFY_TUTORIAL, VERIFY_EXPIRE, SHORTLINK_API, SHORTLINK_URL, DELETE_TIME, SUPPORT_LINK, UPDATES_LINK, LOG_CHANNEL, PICS, IS_STREAM, PAYMENT_QR, OWNER_USERNAME, REACTIONS, PM_FILE_DELETE_TIME, OWNER_UPI_ID
+from utils import get_settings, get_size, is_subscribed, is_check_admin, get_shortlink, get_verify_status, update_verify_status, save_group_settings, temp, get_readable_time, get_wish, get_seconds
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
@@ -716,3 +645,21 @@ async def set_fsub(client, message):
         channels += f'{chat.title}\n'
     await save_group_settings(grp_id, 'fsub', fsub_ids)
     await message.reply_text(f"Successfully set force channels for {title} to\n\n<code>{channels}</code>")
+
+@Client.on_message(filters.command('remove_fsub'))
+async def remove_fsub(client, message):
+    grp_id = message.chat.id
+    settings = await get_settings(int(grp_id))
+    user_id = message.from_user.id
+    chat_type = message.chat.type
+    if not user_id:
+        return await message.reply("<b>You are Anonymous admin you can't use this command !</b>")
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text("Use this command in group.")
+    if not await is_check_admin(client, grp_id, user_id):
+        return await message.reply_text('You not admin in this group.')
+    if not settings['fsub']:
+        await message.reply_text("ʏᴏᴜ ᴅɪᴅɴ'ᴛ ᴀᴅᴅᴇᴅ ᴀɴʏ ꜰᴏʀᴄᴇ sᴜʙsᴄʀɪʙᴇ ᴄʜᴀɴɴᴇʟ...") # query.answer not work in command so I can change to message.reply_text
+        return
+    await save_group_settings(grp_id, 'fsub', None)
+    await message.reply_text("<b>Successfully removed your force channel id...</b>")
