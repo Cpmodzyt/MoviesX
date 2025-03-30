@@ -27,14 +27,14 @@ API_HASH = environ.get('API_HASH', '2b79fd2d2c83173807a039325e7e166f')
 if len(API_HASH) == 0:
     print('Error - API_HASH is missing, exiting now')
     exit()
-BOT_TOKEN = environ.get('BOT_TOKEN', '7886317053:AAGNoOTRUEmFlZ_EgPJ5aM-Jrq6OZl7D-r0')
+BOT_TOKEN = environ.get('BOT_TOKEN', '7948974801:AAE0lagvCEtVeL7q4iusXvYilWyHdS9Lh4o')
 if len(BOT_TOKEN) == 0:
     print('Error - BOT_TOKEN is missing, exiting now')
     exit()
 PORT = int(environ.get('PORT', '80'))
 
 # Bot pics
-PICS = environ.get('PICS', 'https://i.ibb.co/Rzb0GYn/d1ef41e87e9cc0a7.jpg').split()
+PICS = environ.get('PICS', 'https://imgur.com/a/hTT24cS').split()
 # Bot Admins
 ADMINS = environ.get('ADMINS', '7717701360')
 if len(ADMINS) == 0:
@@ -63,7 +63,7 @@ else:
     SUPPORT_GROUP = int(SUPPORT_GROUP)
 
 # MongoDB information
-DATABASE_URL = environ.get('DATABASE_URL', "mongodb+srv://itzcp:itzmecp@cluster0.rrphufd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DATABASE_URL = environ.get('DATABASE_URL', "mongodb+srv://itzmecp:itzmecp@cluster0.xh7iky8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 if len(DATABASE_URL) == 0:
     print('Error - DATABASE_URL is missing, exiting now')
     exit()
@@ -71,12 +71,12 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Files')
 
 # Links
-SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/Interworld_Request')
-OWNER_USERNAME = environ.get("OWNER_USERNAME", "https://t.me/Itzmecp")
-UPDATES_LINK = environ.get('UPDATES_LINK', 'https://t.me/Interworldmx')
-FILMS_LINK = environ.get('FILMS_LINK', 'https://t.me/Interworld_Request')
-TUTORIAL = environ.get("TUTORIAL", "https://t.me/Interworldmx")
-VERIFY_TUTORIAL = environ.get("VERIFY_TUTORIAL", "https://t.me/Interworldmx")
+SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/Movies4ulkRequest')
+OWNER_USERNAME = environ.get("OWNER_USERNAME", "https://t.me/code_9x")
+UPDATES_LINK = environ.get('UPDATES_LINK', 'https://t.me/movies4ulk')
+FILMS_LINK = environ.get('FILMS_LINK', 'https://t.me/Movies4ulkRequest')
+TUTORIAL = environ.get("TUTORIAL", "https://t.me/movies4ulk")
+VERIFY_TUTORIAL = environ.get("VERIFY_TUTORIAL", "https://t.me/movies4ulk")
 
 # Bot settings
 DELETE_TIME = int(environ.get('DELETE_TIME', 3600)) # Add time in seconds
